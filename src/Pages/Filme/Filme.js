@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import CustomPagination from '../../components/Pagination/Pagination'
 import SingleContent from '../../components/SingleContent/SingleContent'
 import Genres from '../../components/Genres'
 import './Filme.css'
+import useGenre from '../../hooks/useGenre'
+import CustomPagination from '../../components/Pagination/Pagination'
 
 const Filme = () => {
+  const [genres, setGenres] = useState([])
+  const [selectedGenres, setSelectedGenres] = useState([])
   const [seite, setSeite] = useState(1)
   const [inhalt, setInhalt] = useState([])
   const [numOfSeiten, setNumOfSeiten] = useState()
-  const [selectedGenres, setSelectedGenres] = useState([])
-  const [genres, setGenres] = useState([])
+  const genreforURL = useGenre(selectedGenres)
 
   const fetchFilme = async () => {
-    // const { data } = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REAP_APP_API_KEY}&language=de-DE&sort_by=popularity.desc&include_adult=true&include_video=false=${seite}$with_genres=${genreforUrl}`)
-    const { data } = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REAP_APP_API_KEY}&language=de-DE&sort_by=popularity.desc&include_adult=true&include_video=false=${seite}`)
+    const { data } = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=de-DE&sort_by=popularity.desc&include_adult=true&include_video=false&page=${seite}&with_genres=${genreforURL}`)
+    // const { data } = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REAP_APP_API_KEY}&language=de-DE&sort_by=popularity.desc&include_adult=true&include_video=false=${seite}`)
 
     // console.log(data)
     setInhalt(data.results)
@@ -22,8 +24,10 @@ const Filme = () => {
   }
 
   useEffect(() => {
+    window.scroll(0, 0)
     fetchFilme()
-  }, [seite])
+    // eslint-disable-next-line
+  }, [genreforURL, seite]);
 
   return (
     <div>
