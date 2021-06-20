@@ -17,6 +17,7 @@ const Angesagt = () => {
 
   useEffect(() => {
     fetchAngesagt()
+    // eslint-disable-next-line
   }, [seite])
 
   return (

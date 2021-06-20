@@ -20,7 +20,8 @@
   display: flex;
   justify-content: center;
   font-family: 'Quicksand', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 2vw;
+  font-size: 5vw;
+  margin-top: 15px;
   padding: 4px;
   border-radius: 50px;
   color: whitesmoke;
@@ -28,6 +29,7 @@
 
 @media (max-width: 1000px) {
   .pageTitle {
-    font-size: 6.4vw;
+    font-size: 5.4vw;
+    margin-top: 5px;
   }
 }
