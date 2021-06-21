@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import SingleContent from '../../components/SingleContent/SingleContent'
-import Genres from '../../components/Genres'
+import Genres from '../../components/Genres/Genres'
 import useGenre from '../../hooks/useGenre'
 import CustomPagination from '../../components/Pagination/Pagination'
 import './Serien.css'
@@ -26,7 +26,7 @@ const Serien = () => {
     window.scroll(0, 0)
     fetchSerien()
     // eslint-disable-next-line
-  }, [genreforURL, seite]);
+  }, [seite ,genreforURL]);
 
   return (
     <div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import SingleContent from '../../components/SingleContent/SingleContent'
-import Genres from '../../components/Genres'
+import Genres from '../../components/Genres/Genres'
 import './Filme.css'
 import useGenre from '../../hooks/useGenre'
 import CustomPagination from '../../components/Pagination/Pagination'
@@ -27,7 +27,7 @@ const Filme = () => {
     window.scroll(0, 0)
     fetchFilme()
     // eslint-disable-next-line
-  }, [genreforURL, seite]);
+  }, [seite, genreforURL]);
 
   return (
     <div>

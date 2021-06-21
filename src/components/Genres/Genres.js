@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Chip from '@material-ui/core/Chip'
+import { Chip } from '@material-ui/core'
 import axios from 'axios'
 
 const Genres = ({
@@ -50,7 +50,7 @@ const Genres = ({
           onDelete={() => handleRemove(genre)}
         />
       ))}
-      {genres && genres.map((genre) => (
+      {genres.map((genre) => (
         <Chip
           key={genre.id}
           style={{ margin: 2 }}
